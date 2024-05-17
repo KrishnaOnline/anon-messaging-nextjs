@@ -1,5 +1,5 @@
 import mongoose, {Schema, Document} from "mongoose";
-import { Message, messageSchema } from "./message.model";
+import { Message, messageSchema } from "./Message";
 
 export interface User extends Document {
     username: string;
@@ -11,7 +11,7 @@ export interface User extends Document {
     isAcceptingMsgs: boolean;
     messages: Message[];
 }
-const userSchema: Schema<User> = new Schema({
+const userSchema: Schema<User> = new mongoose.Schema({
     username: {
         type: String,
         required: [true, "Username is Required"],
@@ -49,3 +49,5 @@ const userSchema: Schema<User> = new Schema({
 
 const UserModel = (mongoose.model.User as mongoose.Model<User>) 
                   || mongoose.model<User>("User", userSchema);
+
+export default UserModel;
