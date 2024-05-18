@@ -47,7 +47,7 @@ const userSchema: Schema<User> = new mongoose.Schema({
     messages: [messageSchema],
 })
 
-const UserModel = (mongoose.model.User as mongoose.Model<User>) 
+const UserModel = (mongoose.models.User as mongoose.Model<User>) 
                   || mongoose.model<User>("User", userSchema);
 
 export default UserModel;
