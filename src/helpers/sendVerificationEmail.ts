@@ -16,11 +16,11 @@ export async function sendVerificationEmail(
         // });
         // console.log("Email Sent to ", res);
         var transporter = nodemailer.createTransport({
-            host: "sandbox.smtp.mailtrap.io",
-            port: 2525,
+            host: process.env.MAIL_HOST,
+            port: 587,  // 2525 for mailtrap...
             auth: {
-              user: "3ce494948b4ba6",
-              pass: "3a89d960a55e6a"
+                user: process.env.MAIL_USER,
+                pass: process.env.MAIL_PASS
             }
         });
         const info = await transporter.sendMail({
@@ -37,11 +37,11 @@ export async function sendVerificationEmail(
             success: true,
             message: "Sent Verification Email Successfully",
         }
-    } catch(err) {
+    } catch(err: any) {
         console.error("Error Sending Verification Email");
         return {
             success: false,
-            message: "Failed to Send Verification Email",
+            message: err.message,
         }
     }
 }
