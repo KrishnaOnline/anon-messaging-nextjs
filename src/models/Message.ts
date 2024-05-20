@@ -12,6 +12,6 @@ export const messageSchema: Schema<Message> = new mongoose.Schema/*<Message>*/({
     createdAt: {
         type: Date,
         required: true,
-        default: Date.now(),
+        default: Date.now,
     }
 })
