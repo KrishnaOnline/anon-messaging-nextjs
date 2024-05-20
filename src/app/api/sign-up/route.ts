@@ -62,6 +62,7 @@ export async function POST(request: Request) {
         return Response.json({
             success: true,
             message: "User Registered Successfully",
+            // data: await UserModel.findOne({email}),
         }, {status: 201})
     } catch(err) {
         console.error("Error Registering User", err);
